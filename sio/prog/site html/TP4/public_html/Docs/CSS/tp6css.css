@@ -6,17 +6,3 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
     Created on : 17 févr. 2025, 08:09:41
     Author     : uti012
 */
-table{
-    border-spacing: 5px;
-}   
-    
-    
-    
- th, td {
-  padding: 8px 12px;
-  border: 1px solid #ddd;
-  text-align: 
- }
-tbody tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
