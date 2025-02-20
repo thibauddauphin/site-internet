@@ -54,14 +54,16 @@ caption {
 .calendrier th:nth-child(1), .calendrier th:nth-child(2),
 .calendrier th:nth-child(3), .calendrier th:nth-child(4),
 .calendrier th:nth-child(5) {
-    background-color: green;
-    color: white;
+    background-color: #87de49;
+
+;
+    color: black;
 }
 
 .calendrier th:nth-child(6), .calendrier th:nth-child(7),
 .calendrier tr:nth-child(n+2) td:nth-child(6),
 .calendrier tr:nth-child(n+2) td:nth-child(7) {
-    background-color: lightgreen;
+    background-color: #b4ff73;
 }
 
 /* Ajout du style pour les zones A, B et C */
