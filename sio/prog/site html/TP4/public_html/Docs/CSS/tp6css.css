@@ -71,7 +71,7 @@ caption {
     background-color: #f4c480;
          
 }
-.zoneAtitle {
+.A {
     background-color: orange;
     color : white;      
 }
@@ -80,7 +80,7 @@ caption {
     background-color: #80a9f4;
     
 }
-.zoneBtitle {
+.B {
     background-color: blue;
     color : white;
 }
@@ -88,7 +88,7 @@ caption {
 .zoneC {
     background-color: #a8d08d;
 }
-.zoneCtitle {
+.C {
     background-color: green;
     color : white;
 }
