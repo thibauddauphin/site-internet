@@ -11,6 +11,36 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this
     </head>
     <body>
         <div><h1>Chiffre non négatif</h1></div>
+        <button onclick="askNumber()"> Calculer </button>
+        <script>
+            function isNumber(){
+                let a=prompt("choisi ton chiffre");
+                if (a<0 && a==="number"){
+                    a=prompt("choisi ton chiffre");
+                }
+                let b=prompt("choisi ton deuxieme chiffre");
+                if (b<0 && b==="number"){
+                    b=prompt("choisi ton chiffre deuxieme chiffre");
+                }
+                let m=prompt("voulez-vous garder ce chiffre oui/non");
+                while(m!=="oui"){
+                    a=prompt("choisi ton chiffre");
+                    if (a<0 && a!==""){
+                    a=prompt("choisi ton chiffre");
+                    }
+                    b=prompt("choisi ton deuxieme chiffre");
+                    if (b<0 && b!==Number){
+                    b=prompt("choisi ton chiffre deuxieme chiffre");
+                    }
+                    m=prompt("voulez-vous garder ce chiffre oui/non");
+                }    
+                let r =a * b;
+            console.log("voici le resultat : "+r);
+            alert("voici le resultat : "+r);
+        }
+        </script>
+        <BR>
+        <br>
         <button onclick="window.location.href ='../TP8.html'">Retour au TP8</button>
     </body>
 </html>

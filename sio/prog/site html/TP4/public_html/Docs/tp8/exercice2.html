@@ -15,17 +15,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this
         <script>
             function askNumber(){
                 let a=prompt("choisi ton chiffre");
-                let m=("voulez-vous garder ce chiffre oui/non");
-                if(m!="oui"){
-                    a=prompt("choisi ton chiffre");}
                 let b=prompt("choisi ton deuxieme chiffre");
-                let n=("voulez-vous garder ce chiffre oui/non");
-                if(n!="oui"){
-                    a=prompt("choisi ton chiffre");}
+                let m=prompt("voulez-vous garder ce chiffre oui/non");
+                while(m!="oui"){
+                    a=prompt("choisi ton chiffre");
+                    b=prompt("choisi ton deuxieme chiffre");
+                    m=prompt("voulez-vous garder ce chiffre oui/non");
+                }    
                 let r =a * b;
-        
-            
-        }
             console.log("voici le resultat : "+r);
             alert("voici le resultat : "+r);
         }
