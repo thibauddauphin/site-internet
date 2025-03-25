@@ -8,9 +8,60 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+     body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+ .haut{
+ border:1px solid;
+ height: 10vh;
+ background-color : red;
+ padding: 1vh;
+ }
+  .gauche{
+   height: 100vh;   
+ border:1px solid black;   
+ background-color: blue;
+    width: 15%;
+    padding: 1em;
+ }
+  .droite{
+   height: 100vh;   
+ border:1px solid black;   
+ background-color: #713e00;
+    width: 15%;
+    padding: 1em;
+ }
+ .milieu{
+      border:1px solid black; 
+    background-color: green;
+    width: 85%;
+    padding: 1em;
+ }
+.container {
+    display: flex;
+}
+ </style>
     </head>
     <body>
         <div><h1>2ème page</h1></div>
-         <button onclick="window.location.href ='exercice2.html'">Retour a l'exercice 2</button>
-    </body>
+ <header class="haut">   
+ <nav> Zone du haut</nav>
+ </header>
+ <div class="container">
+        <aside class="gauche">
+            <p>Contenu à gauche</p>
+        </aside>
+        <main class="milieu">
+            <p>Contenu à milieu</p>
+        </main>
+     <aside class="droite">
+            <p>Contenu à droite</p>
+        </aside>
+    </div>
+ </body>
+ <button onclick="window.location.href ='exercice2.html'">Retour a l'exercice 2</button>
 </html>
