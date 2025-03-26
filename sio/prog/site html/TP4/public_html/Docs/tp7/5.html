@@ -1,16 +1,88 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this template
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-         <button onclick="window.location.href ='exercice2.html'">Retour a l'exercice 2</button>
-    </body>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mise en page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: white;
+        }
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            border: 1px solid black;
+        }
+        .header{
+            background: #31b491;
+            padding: 20px;
+            text-align: left;
+            color: black;
+        }
+        .footer {
+            background: #00c690;
+            padding: 15px;
+            text-align: left;
+            color: black;
+        }
+        .menu-top {
+            background: purple;
+            padding: 10px;
+            text-align: left;
+            color: black;
+        }
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            background: white;
+            margin: 2px;
+            padding: 2px;
+            border: 5px solid white;
+        }
+        .box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 15px;
+            color: black;
+            padding: 100px;
+        }
+        .box:nth-child(1) {
+            background: #31b491;
+        }
+        .box:nth-child(2) {
+            background: #d7b600;
+        }
+        .box:nth-child(3) {
+            background: #d3d3d3;
+        }
+        .box:nth-child(4) {
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+        <div class="titre"><h1>5ème page</h1></div>
+    <div class="container">
+        <div class="header">Haut</div>
+        <div class="menu-top">Menu</div>
+        <div class="content">
+            <div class="box">A</div>
+            <div class="box">B</div>
+            <div class="box">C</div>
+            <div class="box">D</div>
+        </div>
+        <div class="footer">Bas</div>
+    </div>
+    <br>
+       <button onclick="window.location.href ='exercice2.html'">Retour a l'exercice 2</button> 
+</body>
 </html>
