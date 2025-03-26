@@ -1,81 +1,96 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this template
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <style>
-     body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
- .haut{
- border:1px solid;
- height: 5vh;
- background-color : red;
- padding: 1vh;
- }
-  .gauche{
-      position: absolute;
-   height: 55vh;   
- border:1px solid black;   
- background-color: blue;
-    width: 200px;
-    padding: 1em;
-    height: 85%;
- }
-  .droite{
-      position: absolute;
-   height: 55vh;   
- border:1px solid black;   
- background-color: blue;
-    width: 200px;
-    padding: 1em;
-    height: 85%;
-        right: 0;
- }
-.grille{
-   position: absolute;
-    left: 235px;
-    width: 793px;
-    height: 70%; 
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-.boite {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid;
-    color: white;
-        font-weight: bold;
-    background-color: #58c403;
-}
-}
-
-
-
- </style>
-    </head>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disposition en zones</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+        .titre {
+            text-align: left;
+            font-size: 24px;
+            font-weight: bold;
+            padding: 10px;
+        }
+        .container {
+            display: grid;
+            grid-template-rows: 50px auto 50px;
+            grid-template-columns: 100px repeat(5, 1fr) 100px;
+            width: 100%;
+            height: 100vh;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+        .zone-haut {
+            grid-column: 1 / -1;
+            background-color: #fe2a2a;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .zone-gauche {
+            grid-column: 1 / 2;
+            grid-row: 2 / 4;
+            background-color: #0666c5;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .zone-droite {
+            grid-column: 7 / 8;
+            grid-row: 2 / 4;
+            background-color: #0666c5;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .zone-centre {
+            grid-column: 2 / 7;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            background-color: #75ea07;
+        }
+        .zone-centre div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid white;
+            color: white;
+        }
+        .zone-bas {
+            grid-column: 2 / 7;
+            background-color: #f3e400;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
 <body>
-    <div><h1>7ème page</h1></div>
- <header class="haut">   
- <nav> Zone du haut</nav>
- </header>
-    <div class="gauche">Contenu à gauche</div>
-     <div class="droite">Contenu à droite</div>
-    <div class="grille">
-        <div class="boite">Z1</div>
-        <div class="boite">Z2</div>
-        <div class="boite">Z3</div>
-        <div class="boite">Z4</div>
-        <div class="boite">Z5</div>
+    <div class="titre"><h1>7ème page</h1></div>
+    <div class="container">
+        <div class="zone-haut">Zone du Haut</div>
+        <div class="zone-gauche">Zone de Gauche</div>
+        <div class="zone-centre">
+            <div>Z1</div>
+            <div>Z2</div>
+            <div>Z3</div>
+            <div>Z4</div>
+            <div>Z5</div>
+        </div>
+        <div class="zone-droite">Zone de Droite</div>
+        <div class="zone-bas">Zone du Bas</div>
     </div>
-    <footer class="bas">Zone du bas</footer>
     <button onclick="window.location.href ='exercice2.html'">Retour a l'exercice 2</button>
- </body>
+</body>
 </html>
