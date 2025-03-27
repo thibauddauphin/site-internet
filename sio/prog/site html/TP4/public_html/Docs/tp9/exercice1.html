@@ -46,3 +46,72 @@ text-decoration: underline;
         <button onclick="window.location.href ='../TP9.html'">Retour au TP9</button>
     </body>
 </html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infobulle avec image</title>
+    <style>
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            color: blue;
+            text-decoration: underline;
+        }
+
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 200px;
+            background-color: white;
+            color: black;
+            text-align: center;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+        }
+
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .tooltip-text img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<p>Voici un <span class="tooltip">mot
+    <span class="tooltip-text">
+        Définition du mot <br>
+        <img src="https://via.placeholder.com/150" alt="Exemple d'image">
+    </span>
+</span> avec une infobulle.</p>
+
+</body>
+</html>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".tooltip").forEach(el => {
+            el.addEventListener("click", function () {
+                let tooltipText = this.querySelector(".tooltip-text");
+                tooltipText.style.visibility = tooltipText.style.visibility === "visible" ? "hidden" : "visible";
+                tooltipText.style.opacity = tooltipText.style.opacity === "1" ? "0" : "1";
+            });
+        });
+    });
+</script>
