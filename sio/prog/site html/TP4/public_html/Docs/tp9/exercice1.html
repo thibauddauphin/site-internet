@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+        .lorem{
+ border:1px solid;
+ height: 10vh;
+ background-color :  #1bacdb ;
+ padding: 1vh;
+ color: white;
+ text-align: center;
+ }       
+ .def {
+            position: relative;
+            cursor: pointer;
+            color: blue;
+text-decoration: underline;
+ }        .def:hover::after {
+            content: attr(data-definition);
+            position: absolute;
+            left: 0;
+            bottom: 20px;
+            background: black;
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+            white-space: nowrap;
+            font-size: 10px;
+        }
+ 
+        </style>
+    </head>
+    <body>
+        <div><h1>Exercice 1 : Lorem ipsum</h1></div>
+        <div class="lorem" ><h2>Lorem ipsum</h2></div>
+        <span class="def" data-definition="Lorem est un texte factice utilisé dans la compotition et la mise en page avant impression.">Lorem ipsum</span>
+        <img src="../../Image/lorem.jpg" alt="Image 1">
+        <br>
+        <button onclick="window.location.href ='../TP9.html'">Retour au TP9</button>
+    </body>
+</html>

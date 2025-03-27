@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Texte avec Définitions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        .tooltip {
+            position: relative;
+            cursor: pointer;
+            color: blue;
+            text-decoration: underline;
+        }
+        .tooltip:hover::after {
+            content: attr(data-definition);
+            position: absolute;
+            left: 0;
+            bottom: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+            white-space: nowrap;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        Voici un texte d'exemple avec quelques mots ayant une <span class="tooltip" data-definition="Explication ou signification d'un terme.">définition</span>.
+        Le <span class="tooltip" data-definition="Langage de balisage utilisé pour structurer les pages web.">HTML</span> est essentiel pour créer des pages web.
+        De même, <span class="tooltip" data-definition="Langage utilisé pour styliser les éléments HTML.">CSS</span> permet d'améliorer l'apparence d'un site.
+        Enfin, <span class="tooltip" data-definition="Langage de programmation permettant d'ajouter du dynamisme aux pages web.">JavaScript</span> ajoute des fonctionnalités interactives.
+    </p>
+</body>
+<button onclick="window.location.href ='../TP9.html'">Retour au TP9</button>
+</html>
