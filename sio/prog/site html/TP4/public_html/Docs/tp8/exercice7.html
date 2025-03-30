@@ -1,16 +1,156 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this template
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div><h1>Cimenterie Lafarge</h1></div>
-        <button onclick="window.location.href ='../TP8.html'">Retour au TP8</button>
-    </body>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur de Devis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #devis {
+            display: none;
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        #signature {
+            margin-top: 20px;
+        }
+        button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Formulaire de Devis</h2>
+    <form id="devisForm">
+        <label for="nom">Nom du client :</label>
+        <input type="text" id="nom" required><br><br>
+        
+        <label>Description :</label>
+        <input type="text" id="desc1" placeholder="Description 1" required>
+        <input type="number" id="prix1" placeholder="Prix" required>
+        <input type="number" id="quantite1" placeholder="Quantité" required><br><br>
+        
+        <input type="text" id="desc2" placeholder="Description 2">
+        <input type="number" id="prix2" placeholder="Prix">
+        <input type="number" id="quantite2" placeholder="Quantité"><br><br>
+        
+        <input type="text" id="desc3" placeholder="Description 3">
+        <input type="number" id="prix3" placeholder="Prix">
+        <input type="number" id="quantite3" placeholder="Quantité"><br><br>
+        
+        <button type="button" onclick="genererDevis()">Obtenir le devis</button>
+    </form>
+
+    <div id="devis">
+        <h2>DEVIS</h2>
+        <p><strong>Nom du client :</strong> <span id="clientNom"></span></p>
+        <table>
+            <tr>
+                <th>Description</th>
+                <th>Prix</th>
+                <th>Quantité</th>
+                <th>Total</th>
+            </tr>
+            <tbody id="tableBody"></tbody>
+        </table>
+        <p><strong>Sous-total :</strong> <span id="sousTotal"></span> €</p>
+        <p><strong>TVA (20%) :</strong> <span id="tva"></span> €</p>
+        <p><strong>Total :</strong> <span id="total"></span> €</p>
+        
+        <div id="signature">
+            <p><strong>Signature du client :</strong></p>
+            <canvas id="signaturePad" width="400" height="100" style="border:1px solid #000;"></canvas><br>
+            <button onclick="clearSignature()">Effacer</button>
+        </div>
+        
+        <button onclick="imprimerDevis()">Imprimer</button>
+    </div>
+
+    <script>
+        function genererDevis() {
+            let nom = document.getElementById("nom").value;
+            let descriptions = [
+                document.getElementById("desc1").value,
+                document.getElementById("desc2").value,
+                document.getElementById("desc3").value
+            ];
+            let prix = [
+                parseFloat(document.getElementById("prix1").value) || 0,
+                parseFloat(document.getElementById("prix2").value) || 0,
+                parseFloat(document.getElementById("prix3").value) || 0
+            ];
+            let quantites = [
+                parseInt(document.getElementById("quantite1").value) || 0,
+                parseInt(document.getElementById("quantite2").value) || 0,
+                parseInt(document.getElementById("quantite3").value) || 0
+            ];
+            
+            let tableBody = document.getElementById("tableBody");
+            tableBody.innerHTML = "";
+            let sousTotal = 0;
+
+            for (let i = 0; i < descriptions.length; i++) {
+                if (descriptions[i] && prix[i] > 0 && quantites[i] > 0) {
+                    let totalLigne = prix[i] * quantites[i];
+                    sousTotal += totalLigne;
+                    tableBody.innerHTML += `<tr>
+                        <td>${descriptions[i]}</td>
+                        <td>${prix[i]} €</td>
+                        <td>${quantites[i]}</td>
+                        <td>${totalLigne} €</td>
+                    </tr>`;
+                }
+            }
+
+            let tva = sousTotal * 0.2;
+            let total = sousTotal + tva;
+
+            document.getElementById("clientNom").textContent = nom;
+            document.getElementById("sousTotal").textContent = sousTotal.toFixed(2);
+            document.getElementById("tva").textContent = tva.toFixed(2);
+            document.getElementById("total").textContent = total.toFixed(2);
+            document.getElementById("devis").style.display = "block";
+            document.getElementById("devisForm").style.display = "none";
+        }
+
+        function imprimerDevis() {
+            window.print();
+        }
+
+        let canvas = document.getElementById("signaturePad");
+        let ctx = canvas.getContext("2d");
+        let drawing = false;
+
+        canvas.addEventListener("mousedown", () => drawing = true);
+        canvas.addEventListener("mouseup", () => drawing = false);
+        canvas.addEventListener("mousemove", draw);
+
+        function draw(event) {
+            if (!drawing) return;
+            ctx.lineWidth = 2;
+            ctx.lineCap = "round";
+            ctx.strokeStyle = "black";
+            ctx.lineTo(event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop);
+        }
+
+        function clearSignature() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+    </script>
+</body>
 </html>
