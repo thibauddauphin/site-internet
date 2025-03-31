@@ -34,6 +34,11 @@ text-decoration: underline;
             white-space: nowrap;
             font-size: 10px;
         }
+                .tooltip-text img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
  
         </style>
     </head>
@@ -41,7 +46,6 @@ text-decoration: underline;
         <div><h1>Exercice 1 : Lorem ipsum</h1></div>
         <div class="lorem" ><h2>Lorem ipsum</h2></div>
         <span class="def" data-definition="Lorem est un texte factice utilisé dans la compotition et la mise en page avant impression.">Lorem ipsum</span>
-        <img src="../../Image/lorem.jpg" alt="Image 1">
         <br>
         <button onclick="window.location.href ='../TP9.html'">Retour au TP9</button>
     </body>
@@ -84,12 +88,6 @@ text-decoration: underline;
             visibility: visible;
             opacity: 1;
         }
-
-        .tooltip-text img {
-            width: 100%;
-            height: auto;
-            border-radius: 5px;
-        }
     </style>
 </head>
 <body>
@@ -97,7 +95,7 @@ text-decoration: underline;
 <p>Voici un <span class="tooltip">mot
     <span class="tooltip-text">
         Définition du mot <br>
-        <img src="https://via.placeholder.com/150" alt="Exemple d'image">
+        <img src="../../Image/lorem.jpg" alt="Image">
     </span>
 </span> avec une infobulle.</p>
 
