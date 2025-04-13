@@ -98,6 +98,10 @@
 
     <div id="devis">
         <h2>Détails du Devis</h2>
+        <p><strong>Nom :</strong> <span id="clientNom"></span></p>
+        <p><strong>Prénom :</strong> <span id="clientPrenom"></span></p>
+        <p><strong>Email :</strong> <span id="clientEmail"></span></p>
+        
         <table>
             <tr>
                 <th>Volume de béton nécessaire (m³)</th>
@@ -129,6 +133,11 @@
             const prixM3 = 91;
             const prixTransport = 140;
 
+            // Récupération des informations du client
+            const nom = document.getElementById("nom").value;
+            const prenom = document.getElementById("prenom").value;
+            const mail = document.getElementById("mail").value;
+
             // Calcul du volume de béton
             const volume = surface * epaisseur;
             // Calcul de la quantité de ciment
@@ -141,6 +150,9 @@
             const coutTTC = coutHT * 1.2; // Ajout de la TVA à 20%
 
             // Affichage des résultats
+            document.getElementById("clientNom").textContent = nom;
+            document.getElementById("clientPrenom").textContent = prenom;
+            document.getElementById("clientEmail").textContent = mail;
             document.getElementById("volume").textContent = volume.toFixed(2);
             document.getElementById("ciment").textContent = ciment.toFixed(2);
             document.getElementById("camions").textContent = camions;

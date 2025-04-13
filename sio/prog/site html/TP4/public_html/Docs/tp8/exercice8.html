@@ -83,7 +83,7 @@
     <form id="devisForm">
         <label for="nom">Nom du client :</label>
         <input type="text" id="nom" required><br><br>
-        <label for="prenom">Prenom du client :</label>
+        <label for="prenom">Prénom du client :</label>
         <input type="text" id="prenom" required><br><br>
         <label for="mail">Mail du client :</label>
         <input type="text" id="mail" required><br><br>
@@ -98,32 +98,32 @@
 
     <div id="devis">
         <h2>Détails du Devis</h2>
+        <p><strong>Nom :</strong> <span id="clientNom"></span></p>
+        <p><strong>Prénom :</strong> <span id="clientPrenom"></span></p>
+        <p><strong>Email :</strong> <span id="clientEmail"></span></p>
+        
         <table>
             <tr>
-                <th>Nom</th>
-                <th>Prénom</th>
-                <th>Email</th>
+                <th>Volume de béton nécessaire (m³)</th>
+                <th>Quantité de ciment nécessaire (tonnes)</th>
+                <th>Nombre de camions nécessaires</th>
             </tr>
             <tr>
-                <td id="clientNom"></td>
-                <td id="clientPrenom"></td>
-                <td id="clientEmail"></td>
+                <td id="volume"></td>
+                <td id="ciment"></td>
+                <td id="camions"></td>
             </tr>
         </table>
-        <p><strong>Volume de béton nécessaire :</strong> <span id="volume"></span> m³</p>
-        <p><strong>Quantité de ciment nécessaire :</strong> <span id="ciment"></span> tonnes</p>
-        <p><strong>Nombre de camions nécessaires :</strong> <span id="camions"></span></p>
         <p><strong>Coût total HT :</strong> <span id="coutHT"></span> €</p>
         <p><strong>Coût total TTC :</strong> <span id="coutTTC"></span> €</p>
     </div>
     
     <div id="signature">
         <p><strong>Signature du client :</strong></p>
-        <canvas id="signaturePad" width="400" height="100" style="border:1px solid #000;"></canvas><br>
-        <button onclick="clearSignature()">Effacer</button>
+        <canvas id="signaturePad" width="400" height="100" style="border:1px solid #000;"></canvas><br><br>
+        <button onclick="clearSignature()">Effacer</button><br><br>
+        <button onclick="imprimerDevis()">Imprimer</button>
     </div>
-
-    <button onclick="imprimerDevis()">Imprimer</button>
 
     <script>
         function calculerDevis() {
@@ -143,6 +143,7 @@
             const ciment = volume * 0.350; // 350 kg/m³
             // Calcul du nombre de camions nécessaires
             const camions = Math.ceil(volume / 9); // 9 m³ par camion
+
             // Coûts
             const coutHT = (volume * prixM3) + (camions * prixTransport);
             const coutTTC = coutHT * 1.2; // Ajout de la TVA à 20%
