@@ -64,7 +64,7 @@
             #devisForm,
             #surface, 
             #epaisseur, 
-            #mail,
+            #email,
             #nom,
             #prenom {
                 display: none; /* Masque la surface et l'épaisseur lors de l'impression */
@@ -80,18 +80,37 @@
 </head>
 <body>
     <h1>Calculateur de Devis Béton</h1>
-    <form id="devisForm">
+    <form id="devisForm" novalidate>
         <label for="nom">Nom du client :</label>
-        <input type="text" id="nom" required><br><br>
+        <input type="text" id="nom" name="nom" pattern="[A-Za-zÀ-ÖØ-öø-ÿ]+" 
+               title="Le nom ne doit contenir que des lettres." 
+               required 
+               oninvalid="this.setCustomValidity('Veuillez saisir un nom valide (uniquement des lettres).')" 
+               oninput="this.setCustomValidity('')">
         <label for="prenom">Prénom du client :</label>
-        <input type="text" id="prenom" required><br><br>
-        <label for="mail">Mail du client :</label>
-        <input type="text" id="mail" required><br><br>
+        <input type="text" id="prenom" name="prenom" pattern="[A-Za-zÀ-ÖØ-öø-ÿ]+" 
+               title="Le prénom ne doit contenir que des lettres." 
+               required 
+               oninvalid="this.setCustomValidity('Veuillez saisir un prénom valide (uniquement des lettres).')" 
+               oninput="this.setCustomValidity('')">
+        <label for="email">Mail du client :</label>
+        <input type="email" id="email" name="email" 
+               required 
+               oninvalid="this.setCustomValidity('Veuillez saisir une adresse email valide (exemple@mail.fr).')" 
+               oninput="this.setCustomValidity('')">
         <label for="surface">Surface (m²) :</label>
-        <input type="number" id="surface" required>
-        
+        <input type="number" id="surface" name="surface" 
+               min="1" 
+               required 
+               oninvalid="this.setCustomValidity('Veuillez saisir une surface en m² (minimum 1).')" 
+               oninput="this.setCustomValidity('')">
         <label for="epaisseur">Épaisseur (cm) :</label>
-        <input type="number" id="epaisseur" required min="15" max="35">
+        <input type="number" id="epaisseur" name="epaisseur" 
+               min="15" 
+               max="35" 
+               required 
+               oninvalid="this.setCustomValidity('Veuillez saisir une épaisseur entre 15 et 35 cm.')" 
+               oninput="this.setCustomValidity('')">
         
         <button type="button" onclick="calculerDevis()">Obtenir le devis</button>
     </form>
@@ -120,13 +139,19 @@
     
     <div id="signature">
         <p><strong>Signature du client :</strong></p>
-        <canvas id="signaturePad" width="400" height="100" style="border:1px solid #000;"></canvas><br><br>
-        <button onclick="clearSignature()">Effacer</button><br><br>
-        <button onclick="imprimerDevis()">Imprimer</button>
+        <canvas id="signaturePad" width="400" height="100" style="border:1px solid #000;"></canvas><br>
+        <button onclick="clearSignature()">Effacer</button>
+            <button onclick="imprimerDevis()">Imprimer</button>
     </div>
 
     <script>
         function calculerDevis() {
+            const form = document.getElementById("devisForm");
+            if (!form.checkValidity()) {
+                form.reportValidity(); // Affiche les messages d'erreur
+                return; // Sort de la fonction si le formulaire n'est pas valide
+            }
+
             const surface = parseFloat(document.getElementById("surface").value);
             const epaisseur = parseFloat(document.getElementById("epaisseur").value) / 100; // Convertir cm en m
             const prixM3 = 91;
@@ -135,7 +160,7 @@
             // Récupération des informations du client
             const nom = document.getElementById("nom").value;
             const prenom = document.getElementById("prenom").value;
-            const mail = document.getElementById("mail").value;
+            const mail = document.getElementById("email").value;
 
             // Calcul du volume de béton
             const volume = surface * epaisseur;
