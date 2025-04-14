@@ -79,8 +79,8 @@
     </style>
 </head>
 <body>
-    <h1>Calculateur de Devis Béton</h1>
     <form id="devisForm" novalidate>
+        <h1>Calculateur de Devis Béton</h1>
         <label for="nom">Nom du client :</label>
         <input type="text" id="nom" name="nom" pattern="[A-Za-zÀ-ÖØ-öø-ÿ]+" 
                title="Le nom ne doit contenir que des lettres." 
@@ -135,15 +135,13 @@
         </table>
         <p><strong>Coût total HT :</strong> <span id="coutHT"></span> €</p>
         <p><strong>Coût total TTC :</strong> <span id="coutTTC"></span> €</p>
-    </div>
-    
-    <div id="signature">
+        <div id="signature">
         <p><strong>Signature du client :</strong></p>
-        <canvas id="signaturePad" width="400" height="100" style="border:1px solid #000;"></canvas><br>
+        <canvas id="signaturePad" width="400" height="100" style="border:1px solid #000;"></canvas><BR>
         <button onclick="clearSignature()">Effacer</button>
+        <button onclick="imprimerDevis()">Imprimer</button>
+        </div>
     </div>
-
-    <button onclick="imprimerDevis()">Imprimer</button>
 
     <script>
         function calculerDevis() {
@@ -184,8 +182,8 @@
             document.getElementById("coutHT").textContent = coutHT.toFixed(2);
             document.getElementById("coutTTC").textContent = coutTTC.toFixed(2);
             document.getElementById("devis").style.display = "block"; // Affiche le devis
-        }
-
+        
+    }
         function imprimerDevis() {
             window.print(); // Ouvre la boîte de dialogue d'impression
         }
