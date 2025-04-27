@@ -39,25 +39,7 @@ text-decoration: underline;
             height: auto;
             border-radius: 5px;
         }
- 
-        </style>
-    </head>
-    <body>
-        <div><h1>Exercice 1 : Lorem ipsum</h1></div>
-        <div class="lorem" ><h2>Lorem ipsum</h2></div>
-        <span class="def" data-definition="Lorem est un texte factice utilisé dans la compotition et la mise en page avant impression.">Lorem ipsum</span>
-        <br>
-        <button onclick="window.location.href ='../TP9.html'">Retour au TP9</button>
-    </body>
-</html>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infobulle avec image</title>
-    <style>
-        .tooltip {
+ .tooltip {
             position: relative;
             display: inline-block;
             cursor: pointer;
@@ -88,20 +70,18 @@ text-decoration: underline;
             visibility: visible;
             opacity: 1;
         }
-    </style>
-</head>
-<body>
+        </style>
+    </head>
+    <body>
+        <div><h1>Exercice 1 :</h1></div>
 
-<p>Voici un <span class="tooltip">mot
+<p>Voici la définition du mot <span class="tooltip">Lorem ipsum
     <span class="tooltip-text">
-        Définition du mot <br>
+        Lorem est un texte factice utilisé dans la compotition et la mise en page avant impression.<br>
         <img src="../../Image/lorem.jpg" alt="Image">
     </span>
-</span> avec une infobulle.</p>
-
-</body>
-</html>
-
+</span>.</p>
+<button onclick="window.location.href ='../TP9.html'">Retour au TP9</button>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll(".tooltip").forEach(el => {

@@ -1,16 +1,188 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this template
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div><h1>Exercice 2 : porte ouverte</h1></div>
-                <button onclick="window.location.href ='../TP9.html'">Retour au TP9</button>
-    </body>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulaire Journée Porte Ouverte</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f4;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 300px;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px 15px;
+            background-color: #28a745;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .deleteBtn {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .deleteBtn:hover {
+            background-color: #c82333;
+        }
+
+        #printBtn {
+            background-color: #007bff;
+            margin-top: 20px;
+        }
+
+        #printBtn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Ajouté : cacher à l'impression */
+        @media print {
+            .no-print {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h2 class="no-print">Formulaire de Visite :</h2>
+
+    <form id="visiteForm" class="no-print">
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom" required>
+
+        <label for="prenom">Prénom :</label>
+        <input type="text" id="prenom" name="prenom" required>
+
+        <label for="etudes">Études suivies :</label>
+        <select id="etudes" name="etudes" required>
+            <option value="">--Choisissez--</option>
+            <option value="Bac Pro">Bac Pro</option>
+            <option value="STI">STI</option>
+            <option value="STMG">STMG</option>
+            <option value="Général">Général</option>
+        </select>
+
+        <button type="submit">Valider</button>
+    </form>
+
+    <h2>Liste des Visiteurs :</h2>
+
+    <table id="tableVisiteurs">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Études</th>
+                <th class="no-print">Action</th> <!-- Colonne Action cachée à l'impression -->
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Les lignes vont s'ajouter ici -->
+        </tbody>
+    </table>
+
+    <button id="printBtn" class="no-print" onclick="imprimerTableau()">Imprimer le tableau</button>
+    <button onclick="window.location.href ='../TP9.html'">Retour au TP9</button>
+    <script>
+        document.getElementById('visiteForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Empêche le rechargement de la page
+
+            const nom = document.getElementById('nom').value.trim();
+            const prenom = document.getElementById('prenom').value.trim();
+            const etudes = document.getElementById('etudes').value;
+
+            if (nom && prenom && etudes) {
+                const tableau = document.getElementById('tableVisiteurs').getElementsByTagName('tbody')[0];
+                const nouvelleLigne = tableau.insertRow();
+
+                const celluleNom = nouvelleLigne.insertCell(0);
+                const cellulePrenom = nouvelleLigne.insertCell(1);
+                const celluleEtudes = nouvelleLigne.insertCell(2);
+                const celluleAction = nouvelleLigne.insertCell(3);
+
+                celluleNom.textContent = nom;
+                cellulePrenom.textContent = prenom;
+                celluleEtudes.textContent = etudes;
+
+                // Création du bouton de suppression
+                const btnSupprimer = document.createElement('button');
+                btnSupprimer.textContent = 'Supprimer';
+                btnSupprimer.classList.add('deleteBtn');
+                btnSupprimer.onclick = function() {
+                    supprimerLigne(nouvelleLigne);
+                };
+
+                celluleAction.classList.add('no-print'); // Action cachée à l'impression
+                celluleAction.appendChild(btnSupprimer);
+
+                // Réinitialiser le formulaire
+                document.getElementById('visiteForm').reset();
+            }
+        });
+
+        function supprimerLigne(ligne) {
+            ligne.remove(); // Supprime la ligne du tableau
+        }
+
+        function imprimerTableau() {
+            window.print();
+        }
+    </script>
+
+</body>
 </html>
