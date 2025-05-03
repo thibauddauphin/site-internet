@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compte à rebours - Match France</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0D1B2A;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #1B263B;
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        h2, h3, p {
+            margin: 10px 0;
+        }
+
+        .match-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .team {
+            margin: 0 20px;
+        }
+
+        .team img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+
+        .vs {
+            font-size: 24px;
+            margin: 0 10px;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: space-around;
+            font-size: 24px;
+            margin-top: 20px;
+        }
+
+        .countdown div {
+            background: #415A77;
+            padding: 10px 15px;
+            border-radius: 10px;
+            min-width: 80px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            background-color: #E63946;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #D62828;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>FOOT - Ligue des Nations 2025</h3>
+        <h2>PROCHAIN MATCH DE L'ÉQUIPE DE FRANCE</h2>
+        <p>Jeudi 5 juin 2025 à 20h45</p>
+
+        <div class="match-info">
+            <div class="team">
+                <img src="../../Image/logo.jpg" alt="France">
+                <p>FRANCE</p>
+            </div>
+            <div class="vs">VS</div>
+            <div class="team">
+                <img src="../../Image/logo2.jpg" alt="Espagne">
+                <p>ESPAGNE</p>
+            </div>
+        </div>
+
+        <div class="countdown">
+            <div><span id="days">00</span><br>Jours</div>
+            <div><span id="hours">00</span><br>Heures</div>
+            <div><span id="minutes">00</span><br>Minutes</div>
+            <div><span id="seconds">00</span><br>Secondes</div>
+        </div>
+
+        <button onclick="window.location.href='../TP9.html'">Retour au TP9</button>
+    </div>
+
+    <script>
+        const targetDate = new Date("June 5, 2025 20:45:00").getTime();
+
+        setInterval(() => {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").textContent = days;
+            document.getElementById("hours").textContent = hours;
+            document.getElementById("minutes").textContent = minutes;
+            document.getElementById("seconds").textContent = seconds;
+        }, 1000);
+    </script>
+</body>
+</html>
